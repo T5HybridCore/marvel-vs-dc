@@ -1,0 +1,87 @@
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid m-auto" src="assets/img/marvel_dc.png" alt="Marvel - DC">
+            </div>
+            <div class="col-7">
+                <h1 class="display-5 fw-bold">Welcome to <span class="text-danger">Marvel</span> vs <span
+                        class="text-primary">DC</span></h1>
+                <p class="col-md-8 fs-4">
+                    Subscribe to be aware of the world news of the greatest superheroes who have stepped on our planet.
+                </p>
+                <button class="btn btn-primary btn-lg mt-3" type="button" data-bs-toggle="modal"
+                    data-bs-target="#subscribeModal">Subscribe here</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="subscribeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="subscribeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="subscribeModalLabel">Subscribe to Marvel vs DC</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="subscribe()" class="needs-validation" novalidate>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="formName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="formName" placeholder="Alex Zamarripa"
+                            formControlName="name" [ngClass]="{'is-invalid': !form.get('name')?.valid}">
+                        <div class="invalid-feedback" *ngIf="form.controls['name'].errors?.['required']">
+                            * Enter name
+                        </div>
+                        <div class="invalid-feedback" *ngIf="form.controls['name'].errors?.['minlength']">
+                            * At least 3 characters
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="formEmail" placeholder="email@email.com"
+                            formControlName="email" [ngClass]="{'is-invalid': !form.get('email')?.valid}">
+                        <div class="invalid-feedback" *ngIf="form.controls['email'].errors?.['required']">
+                            * Enter an email
+                        </div>
+                        <div class="invalid-feedback" *ngIf="form.controls['email'].errors?.['email']">
+                            * Invalid email address
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row mb-2">
+                            <label class="form-check-label" for="genre">Genre</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="genre" id="inlineRadio1" value="male"
+                                formControlName="genre" [ngClass]="{'is-invalid': !form.get('genre')?.valid}">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="genre" id="inlineRadio2" value="female"
+                                formControlName="genre" [ngClass]="{'is-invalid': !form.get('genre')?.valid}">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                        <div class="invalid-feedback" *ngIf="form.controls['genre'].errors?.['required']">
+                            * Select a genre
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formBirthday" class="form-label">Birthday</label>
+                        <input type="date" class="form-control" id="formBirthday" formControlName="birthday"
+                            [ngClass]="{'is-invalid': !form.get('birthday')?.valid}">
+                        <div class="invalid-feedback" *ngIf="form.controls['birthday'].errors?.['required']">
+                            * Enter a date
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]="form.invalid" data-bs-toggle="modal"
+                        data-bs-target="#subscribeModal">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

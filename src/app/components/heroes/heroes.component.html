@@ -1,0 +1,17 @@
+<h1 class="text-center mb-3">Marvel & DC <small>Heroes</small></h1>
+
+<div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4" data-masonry='{"percentPosition": true, "itemSelector": ".col" }'>
+    <div class="col" *ngFor="let h of heroes, let i = index">
+        <div class="card">
+            <img src="{{h.img}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{h.name}}</h5>
+                <p class="card-text" style="text-align: justify; text-justify: inter-word;" [innerHtml]="h.biography"></p>
+                <p class="card-text"><small class="text-muted">{{h.release}}</small></p>
+            </div>
+            <div class="card-footer">
+                <a [routerLink]="['/hero', i]" class="btn btn-outline-primary btn block w-100">Show More</a>
+            </div>
+        </div>
+    </div>
+</div>

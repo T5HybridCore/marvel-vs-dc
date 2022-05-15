@@ -1,0 +1,26 @@
+<div class="row animated fadeIn fast" *ngIf="index === -1">
+    <div class="col-md-12">
+        <div class="alert alert-warning d-flex flex-column" role="alert">
+            <img class="mx-auto" src="/assets/img/no-results-found.png" alt="no-results-found" width="150" height="150">
+            <h4 class="text-center">Sorry, no results found for '{{name}}'</h4>
+        </div>
+        <h3 class="text-center mt-5 mb-3">You may also like</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4 w-75 mx-auto">
+            <div class="col" *ngFor="let h of heroes, let i = index">
+                <div class="card">
+                    <img src="{{h.img}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{h.name}}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a (click)="goToHero(i)" class="btn btn-outline-primary btn block w-100">Show More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5 class="text-center mt-4 mb-3">or</h5>
+        <h4 class="text-center mb-5">wait {{timeout}} seconds to redirect...</h4>
+    </div>
+</div>
+
+<app-hero *ngIf="index !== -1" [hero]="myHero"></app-hero>
